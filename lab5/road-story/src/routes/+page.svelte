@@ -12,6 +12,7 @@
 	import { onMount } from 'svelte';
 	import * as d3 from 'd3';
 	import scrollama from 'scrollama';
+	import { asset } from '$app/paths'; // adds the GitHub Pages base path to static files
 	import LineChart from '../lib/LineChart.svelte';
 
 	// ---- Shared scene state -------------------------------------------------
@@ -53,7 +54,7 @@
 
 	onMount(() => {
 		// Load the CSV in the browser and convert every column to a number.
-		d3.csv('/us_road_deaths_by_year.csv', (d) => ({
+		d3.csv(asset('/us_road_deaths_by_year.csv'), (d) => ({
 			year: +d.year,
 			fatalities: +d.fatalities,
 			vmt_billions: +d.vmt_billions,
